@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 th:if="${name == 'spozywcze'}" th:text="|Produkty z kategorii Artykuły spożywcze|"></h1>
+<h1 th:if="${name == 'gospodarstwo'}" th:text="|Produkty z kategorii Artykuły gospodarstwa domowego|"></h1>
+<h1 th:if="${name == 'inne'}" th:text="|Produkty z kategorii Inne|"></h1>
+
+
+</body>
+</html>
