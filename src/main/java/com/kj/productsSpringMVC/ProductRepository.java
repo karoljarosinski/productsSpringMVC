@@ -13,6 +13,7 @@ public class ProductRepository {
     public ProductRepository() {
         products = new ArrayList<>();
         products.add(new Product("Masło", 5, Category.FOOD));
+        products.add(new Product("Mleko", 7, Category.FOOD));
         products.add(new Product("Mop", 9, Category.HOME));
         products.add(new Product("Płyn do spryskiwaczy", 4, Category.OTHER));
     }
@@ -30,10 +31,18 @@ public class ProductRepository {
         return null;
     }
 
-    public int calculatePrice() {
+    public int calculatePrice(String category) {
         int sum = 0;
-        for (Product product : products) {
-            sum += product.getPrice();
+        if (category == null) {
+            for (Product product : products) {
+                sum += product.getPrice();
+            }
+        } else {
+            for (Product product : products) {
+                if (product.getCategory().getDescription().equals(category)) {
+                    sum += product.getPrice();
+                }
+            }
         }
         return sum;
     }

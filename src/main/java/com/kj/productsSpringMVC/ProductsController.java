@@ -18,13 +18,15 @@ public class ProductsController {
     public String showProducts(@RequestParam(name = "kategoria", required = false) String category, Model model) {
         Product product = productRepository.findByCategory(category);
 
+
         if (product != null) {
             model.addAttribute("name", product.getCategory().getDescription());
             model.addAttribute("products", productRepository.getAll());
+            model.addAttribute("price", productRepository.calculatePrice(category));
             return "product";
         } else {
             model.addAttribute("products", productRepository.getAll());
-            model.addAttribute("price", productRepository.calculatePrice());
+            model.addAttribute("price", productRepository.calculatePrice(category));
             return "lista";
         }
     }
