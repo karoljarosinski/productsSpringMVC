@@ -33,7 +33,7 @@ public class ProductRepository {
 
     public int calculatePrice(String category) {
         int sum = 0;
-        if (category == null) {
+        if (category.equals("")) {
             for (Product product : products) {
                 sum += product.getPrice();
             }

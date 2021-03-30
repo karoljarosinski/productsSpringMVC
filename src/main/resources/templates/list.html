@@ -9,9 +9,11 @@
 <h1 th:if="${name == 'spozywcze'}" th:text="|Produkty z kategorii Artykuły spożywcze|"></h1>
 <h1 th:if="${name == 'gospodarstwo'}" th:text="|Produkty z kategorii Artykuły gospodarstwa domowego|"></h1>
 <h1 th:if="${name == 'inne'}" th:text="|Produkty z kategorii Inne|"></h1>
+<h1 th:if="${name == ''}" th:text="|Wszystkie produkty|"></h1>
 
 
 <ul>
+    <li th:each="product: ${products}" th:if="${name == ''}" th:text="|Produkt: ${product.name}, Cena: ${product.price}"></li>
     <li th:each="product: ${products}" th:if="${product.category.description == name}" th:text="|Produkt: ${product.name}, Cena: ${product.price}"></li>
 </ul>
 <p th:text="|Suma wszystkich produktów: ${price} złoty|"></p>

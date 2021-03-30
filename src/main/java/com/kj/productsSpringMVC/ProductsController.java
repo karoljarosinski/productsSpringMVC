@@ -14,20 +14,11 @@ public class ProductsController {
         this.productRepository = productRepository;
     }
 
-    @GetMapping("/lista")
-    public String showProducts(@RequestParam(name = "kategoria", required = false) String category, Model model) {
-        Product product = productRepository.findByCategory(category);
-
-
-        if (product != null) {
-            model.addAttribute("name", product.getCategory().getDescription());
-            model.addAttribute("products", productRepository.getAll());
-            model.addAttribute("price", productRepository.calculatePrice(category));
-            return "product";
-        } else {
-            model.addAttribute("products", productRepository.getAll());
-            model.addAttribute("price", productRepository.calculatePrice(category));
-            return "lista";
-        }
+    @GetMapping("/list")
+    public String showProducts2(@RequestParam(name = "kategoria", defaultValue = "") String category, Model model) {
+        model.addAttribute("name", category);
+        model.addAttribute("products", productRepository.getAll());
+        model.addAttribute("price", productRepository.calculatePrice(category));
+        return "list";
     }
 }
