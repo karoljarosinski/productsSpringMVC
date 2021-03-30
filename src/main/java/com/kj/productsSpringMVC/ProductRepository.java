@@ -8,27 +8,22 @@ import java.util.List;
 @Repository
 public class ProductRepository {
 
-    private final List<Product> products;
+    private List<Product> products;
 
     public ProductRepository() {
         products = new ArrayList<>();
         products.add(new Product("Masło", 5, Category.FOOD));
         products.add(new Product("Mleko", 7, Category.FOOD));
         products.add(new Product("Mop", 9, Category.HOME));
+        products.add(new Product("Firanki", 15, Category.HOME));
+        products.add(new Product("Krzesło", 30, Category.HOME));
+        products.add(new Product("Plecak", 50, Category.OTHER));
         products.add(new Product("Płyn do spryskiwaczy", 4, Category.OTHER));
+        products.add(new Product("Srubokret", 17, Category.OTHER));
     }
 
     public List<Product> getAll() {
         return products;
-    }
-
-    public Product findByCategory(String category) {
-        for (Product product : products) {
-            if (product.getCategory().getDescription().equals(category)) {
-                return product;
-            }
-        }
-        return null;
     }
 
     public int calculatePrice(String category) {
@@ -45,5 +40,9 @@ public class ProductRepository {
             }
         }
         return sum;
+    }
+
+    public void add(Product product) {
+        products.add(product);
     }
 }
