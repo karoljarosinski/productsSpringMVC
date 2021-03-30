@@ -45,4 +45,14 @@ public class ProductRepository {
     public void add(Product product) {
         products.add(product);
     }
+
+    public List<Product> findByCategory(String category) {
+        List<Product> result = new ArrayList<>();
+        for (Product product : products) {
+            if (product.getCategory().getDescription().equals(category)) {
+                result.add(product);
+            }
+        }
+        return result;
+    }
 }

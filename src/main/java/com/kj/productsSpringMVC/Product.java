@@ -11,6 +11,9 @@ public class Product {
         this.category = category;
     }
 
+    public Product() {
+    }
+
     public String getName() {
         return name;
     }
